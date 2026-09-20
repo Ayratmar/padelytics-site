@@ -51,60 +51,98 @@
   <main>
     <a class="back" href="../">‹ Padelytics</a>
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: August 22, 2026</p>
+    <p class="updated">Last updated: September 20, 2026</p>
 
     <p>
-      Padelytics ("the app") records your padel matches and uses AI to analyze them — court
-      calibration, player tracking, rally detection, heatmaps, and rally clips. This page explains
-      what we collect, why, and how you can delete it.
+      PadelSense ("the app") records your padel matches and analyses them: it finds the court,
+      follows where each player moves, works out when the rallies were, and cuts a highlights reel.
+      This page explains what it collects, why, and how to get rid of it.
     </p>
 
-    <h2>Information we collect</h2>
-    <ul>
-      <li><strong>Account information</strong> — your name, email address, and profile photo, from Google Sign-In. We use this only to identify you and your matches; we never see or store your Google password.</li>
-      <li><strong>Match recordings</strong> — the video and audio you record of your padel matches.</li>
-      <li><strong>Derived match data</strong> — player positions, rally timing, heatmap images, player thumbnails, and rally-clip videos, all generated from your recordings by our analysis pipeline.</li>
-    </ul>
-
-    <h2>How we use it</h2>
+    <h2>Signing in</h2>
     <p>
-      We use your recordings solely to run match analysis: detecting the court, tracking each
-      player's position, finding rallies, and generating heatmaps and clips for you and your
-      teammates to review.
+      You can sign in with Google or with Apple. Either way we store an identifier for your
+      account and your display name, so the other players in a match can see who they played
+      with. With Google we also store the profile photo URL. With Apple we store no photo, and
+      Apple only ever gives us your name once, at your first sign-in.
     </p>
     <p>
-      While a match is analyzed, we briefly use face detection to tell players apart if they swap
-      sides of the court, so stats stay attached to the right person. This applies to everyone
-      captured in the recording, not just the account holder. Face data is used only during that
-      one analysis run, is never stored afterward, is never used to identify anyone by name, and is
-      never compared against any other recording.
+      We do not store your email address at all, with either provider, and we never see your
+      password. Signing in with Apple creates a separate account from signing in with Google —
+      the two cannot be linked, so use the same one each time to find your matches.
     </p>
 
-    <h2>Sharing</h2>
+    <h2>Match recordings</h2>
     <p>
-      Your data is processed and stored on Google Cloud Run (compute) and Cloudflare R2 / Supabase
-      (storage and database). We do not sell your data, and we do not share it with advertisers or
-      data brokers. If you share a match code with a teammate, they can view that match's analysis
-      and results.
+      The app records video and audio of the whole court while you play. Everyone on court is in
+      that recording, not only the person holding the account, and everyone in frame is being
+      recorded — please make sure the people you are playing with know that.
+    </p>
+    <p>
+      From each recording the analysis produces player positions, rally start and end times,
+      heatmaps, a still of each player cut from a video frame, and short clips of the best
+      rallies.
     </p>
 
-    <h2>Retention and deletion</h2>
+    <h2>How players are told apart</h2>
     <p>
-      We keep your data until you delete it. You can permanently delete your account and every
-      match you've recorded — including video, heatmaps, and rally clips — at any time from the
-      app's <strong>Profile → Delete account</strong>. If you only joined a match someone else
-      recorded, deleting your account removes your name from that match; the recording owner's
-      data is unaffected.
+      <strong>There is no face recognition anywhere in this app.</strong> Players are
+      distinguished by what they are wearing and by which end of the court they play from, worked
+      out separately for each individual match. Nothing is matched against any other recording,
+      nothing is compared between matches, and nobody is identified by name by the analysis. The
+      picture the app shows when it asks which player is you is a crop of a whole person from a
+      video frame, not a face.
+    </p>
+
+    <h2>Location</h2>
+    <p>
+      When you start a match, the app asks for your location once and uses that single reading to
+      work out which club you are playing at, so matches are named after the venue instead of a
+      date. The coordinates are sent to the Google Places API to look up the nearby club, and are
+      stored alongside that match. The app does not track your location at any other time, and
+      refusing the permission only means your matches have no club name — everything else works.
+    </p>
+
+    <h2>Where your data is processed</h2>
+    <p>
+      Analysis runs on Google Cloud Run, videos and clips are stored on Backblaze B2, and match
+      records are kept in a Supabase (PostgreSQL) database. Club lookups go to the Google Places
+      API, as described above. We do not sell your data, and we do not share it with advertisers
+      or data brokers.
+    </p>
+    <p>
+      If you share a match code with the other players, they can see that match — its video,
+      its reel and its stats — and they appear in it as participants.
+    </p>
+
+    <h2>Deleting a match</h2>
+    <p>
+      Deleting a match removes it from <em>your</em> history. The other players in that match keep
+      theirs, because it is their match too. Once every player has deleted it, the video, the
+      chunks it was uploaded in and the highlight clips are deleted from storage for good.
+    </p>
+    <p>
+      What survives that is the numbers: rally times, durations and similar match statistics,
+      kept so long-term stats stay correct. They contain no video and no images.
+    </p>
+
+    <h2>Deleting your account</h2>
+    <p>
+      You can delete your account at any time from <strong>Profile → Delete account</strong> in
+      the app. This removes your profile, and with it your name and photo everywhere they appeared.
+      Matches you recorded that nobody else joined are deleted outright, video included. A match
+      other players also joined stays with them — it is their recording of their game as much as
+      yours — and you are removed from it, along with your pick of which player you were.
     </p>
 
     <h2>Children's privacy</h2>
-    <p>Padelytics is not directed at children under 13, and we do not knowingly collect information from them.</p>
+    <p>PadelSense is not directed at children under 13, and we do not knowingly collect information from them.</p>
 
     <h2>Changes to this policy</h2>
     <p>If this policy changes, we'll update the date at the top of this page.</p>
 
     <h2>Contact</h2>
-    <p>Questions about this policy or your data? Email us at <a href="mailto:mardanov.ayrat@gmail.com">mardanov.ayrat@gmail.com</a>.</p>
+    <p>Questions about this policy or your data? Email <a href="mailto:mardanov.ayrat@gmail.com">mardanov.ayrat@gmail.com</a>.</p>
   </main>
 </body>
 </html>
